@@ -14,36 +14,8 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { VieroError } from '@viero/common/error';
-import { VieroWebComponent } from '../webcomponent';
-import template from './index.html';
+import { PHOTO, PHOTO_OFF } from './photo';
 
-let SHARED;
+export const ENVIRONMENT = PHOTO;
 
-export class VieroApp extends VieroWebComponent {
-  static get html() {
-    return template;
-  }
-
-  static shared() {
-    SHARED = SHARED || new this();
-    return SHARED;
-  }
-
-  constructor() {
-    super();
-    if (SHARED) {
-      throw new VieroError('VieroApp', 764279);
-    }
-
-    this._containers = Array.from(this.$.container.children).reduce((acc, ele) => {
-      acc[ele.id] = ele;
-      return acc;
-    }, {});
-    window.vieroApp = this;
-  }
-
-  get container() {
-    return { ...this._containers };
-  }
-}
+export const ENVIRONMENT_OFF = PHOTO_OFF;

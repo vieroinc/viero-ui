@@ -76,6 +76,7 @@ export class VieroWebComponent extends HTMLElement {
       acc[ele.id] = ele;
       return acc;
     }, {});
+    this.shadowRoot.appendChild(this._template);
   }
 
   /**
@@ -83,7 +84,6 @@ export class VieroWebComponent extends HTMLElement {
    * Always call super.connectedCallback() in your override.
    */
   connectedCallback() {
-    this.shadowRoot.appendChild(this._template);
   }
 
   /**

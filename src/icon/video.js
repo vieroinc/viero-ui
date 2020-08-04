@@ -14,36 +14,10 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { VieroError } from '@viero/common/error';
-import { VieroWebComponent } from '../webcomponent';
-import template from './index.html';
-
-let SHARED;
-
-export class VieroApp extends VieroWebComponent {
-  static get html() {
-    return template;
-  }
-
-  static shared() {
-    SHARED = SHARED || new this();
-    return SHARED;
-  }
-
-  constructor() {
-    super();
-    if (SHARED) {
-      throw new VieroError('VieroApp', 764279);
-    }
-
-    this._containers = Array.from(this.$.container.children).reduce((acc, ele) => {
-      acc[ele.id] = ele;
-      return acc;
-    }, {});
-    window.vieroApp = this;
-  }
-
-  get container() {
-    return { ...this._containers };
-  }
-}
+export const VIDEO = 'M61,62 L148,62 C152.970563,62 157,66.0294373 157,71 L157,139 C157,143.970563 152.970563'
+  + ',148 148,148 L61,148 C56.0294373,148 52,143.970563 52,139 L52,71 C52,66.0294373 56.0294373,62 61,62 Z M62,72 L62'
+  + ',138 L147,138 L147,72 L62,72 Z M88,84.6361253 C88,83.1802335 89.12817,82 90.5198381,82 C90.9190941,82 91.3126358'
+  + ',82.0992501 91.6680345,82.2895718 L130.627825,103.153168 C131.866622,103.816563 132.3568,105.40494 131.722669'
+  + ',106.700905 C131.481667,107.193438 131.098631,107.594151 130.627825,107.846275 L91.6680345,128.709871 C90.4292376'
+  + ',129.373266 88.9109293,128.860467 88.276798,127.564501 C88.0948718,127.192701 88,126.780998 88,126.363317 L88'
+  + ',84.6361253 Z';

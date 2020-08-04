@@ -16,30 +16,19 @@
 
 import { VieroWebComponent } from '../webcomponent';
 import { NONE } from './none';
+import template from './index.html';
 
-class VieroIcon extends VieroWebComponent {
+export class VieroIcon extends VieroWebComponent {
   static get is() {
     return 'viero-icon';
   }
 
   static get html() {
-    return `
-      <style>
-        :host { display: block; }
-        #container { position: relative; width: 100%; height: 100%; }
-        #svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        #path { fill: var(--fill); }
-        :host(:hover) #path { fill: var(--fill-hover, var(--fill)); }
-        :host(:active) #path { fill: var(--fill-active, var(--fill)); }
-      </style>
-      <div id="container">
-        <svg id="svg" viewBox="0 0 210 210">
-          <g id="g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <path id="path" d="M104.5,157" fill-rule="nonzero">
-          </g>
-        </svg>
-      </div>
-    `;
+    return template;
+  }
+
+  static get observedAttributes() {
+    return ['path'];
   }
 
   connectedCallback() {
@@ -50,15 +39,20 @@ class VieroIcon extends VieroWebComponent {
     super.disconnectedCallback();
   }
 
-  get path() {
-    return this.$.path.getAttribute('d');
-  }
-
-  set path(path) {
-    this.$.path.setAttribute('d', path || NONE);
+  attributeChangedCallback(name, oldValue, newValue) {
+    super.attributeChangedCallback(name, oldValue, newValue);
+    // eslint-disable-next-line default-case
+    switch (newValue) {
+      case 'null':
+      case 'undefined':
+      case null:
+      case undefined: {
+        // eslint-disable-next-line no-param-reassign
+        newValue = null;
+      }
+    }
+    this.$.path.setAttribute('d', newValue || NONE);
   }
 }
 
 VieroIcon.register();
-
-export { VieroIcon };

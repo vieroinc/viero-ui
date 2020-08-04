@@ -15,6 +15,8 @@
  */
 
 export const createElement = (tagName, options) => {
+  // eslint-disable-next-line no-param-reassign
+  options = options || {};
   const element = document.createElement(tagName);
   if (options.classes && options.classes.length) {
     element.className = options.classes.join(' ');
