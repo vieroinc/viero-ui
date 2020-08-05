@@ -43,3 +43,25 @@ export const createElement = (tagName, options) => {
 export const rem2Px = (rem) => rem * Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 export const px2Rem = (px) => px / Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+export const openFileOrFolderPicker = (options) => {
+  // eslint-disable-next-line no-param-reassign
+  options = options || {};
+  const attributes = { type: 'file' };
+  if (options.folder) {
+    attributes.directory = '';
+    attributes.webkitdirectory = '';
+  } else {
+    if (options.multiple) {
+      attributes.multiple = '';
+    }
+    if (options.accept) {
+      attributes.accept = options.accept;
+    } else {
+      attributes.accept = '*/*';
+    }
+  }
+  const ele = createElement('input', { attributes, style: { visibility: 'hidden' }, container: document.body });
+  ele.click();
+  return ele;
+};
