@@ -1,0 +1,27 @@
+<style include="viero">
+  :host {
+    position: absolute;
+    background: var(--viero-color-inverse);
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translateZ(0);
+  }
+
+  #container {
+    position: relative;
+    background: var(--viero-dropdown-background, var(--viero-color-inverse, rgb(255, 255, 255)));
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    /*transform: translateZ(0);*/
+  }
+
+  viero-dropdown-cell {
+    cursor: pointer;
+  }
+
+  viero-dropdown-cell:not(:last-child) {
+    border-bottom: 0.1rem solid
+      var(--viero-dropdown-cell-border-bottom, var(--viero-color-shade-light, rgba(0, 0, 0, 0.05)));
+  }
+</style>
+<div id="container"></div>

@@ -16,7 +16,9 @@
 
 import { VieroError } from '@viero/common/error';
 import { VieroWebComponent } from '../webcomponent';
+import { VieroStyle } from '../webcomponent/style';
 import template from './index.html';
+import vieroCSS from './viero.css';
 
 let SHARED;
 
@@ -40,6 +42,7 @@ export class VieroApp extends VieroWebComponent {
       acc[ele.id] = ele;
       return acc;
     }, {});
+    VieroStyle.registerCSS('viero', vieroCSS);
     window.vieroApp = this;
   }
 

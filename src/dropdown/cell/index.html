@@ -1,0 +1,65 @@
+<style include="viero">
+  :host {
+    display: block;
+  }
+
+  #container {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  #container:hover {
+    background: var(--viero-dropdown-cell-border-bottom, var(--viero-color-shade-light, rgba(0, 0, 0, 0.05)));
+  }
+
+  #title {
+    position: relative;
+    height: 3rem;
+    text-align: left;
+    white-space: nowrap;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /*
+  #title span.pill {
+    font: var(--viero-font-smaller);
+    color: var(--viero-color-text-normal-a50);
+    border: 0.1rem solid var(--viero-color-text-normal-a50);
+    border-radius: var(--viero-misc-border-radius-small);
+    padding: 0.1rem 0.2rem 0rem 0.2rem;
+    text-transform: uppercase;
+    display: inline-block;
+    width: fit-content;
+    vertical-align: 0.1rem;
+  }
+  */
+
+  #icon,
+  #ext {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media (max-width: 640px) {
+    #title {
+      height: 4rem;
+    }
+    #icon,
+    #ext {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+</style>
+<div id="container">
+  <viero-icon id="icon" class="flex-no-grow-shrink"></viero-icon>
+  <div id="title" class="flex-grow-shrink"></div>
+  <viero-icon id="ext" class="flex-no-grow-shrink"></viero-icon>
+</div>

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+*:focus,
+*[contenteditable] {
+  outline: none;
+}
+
+.flex-grow-shrink {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.flex-no-grow-shrink {
+  flex-grow: 0;
+  flex-shrink: 0;
+}

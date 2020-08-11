@@ -15,7 +15,7 @@
  */
 
 import { VieroWebComponent } from '../webcomponent';
-import { NONE } from './none';
+import { NONE } from './path/none';
 import template from './index.html';
 
 export class VieroIcon extends VieroWebComponent {
