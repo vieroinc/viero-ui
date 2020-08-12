@@ -1,6 +1,6 @@
 {
   "name": "@viero/ui",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "WebComponents based UI elements used by @vieroinc.",
   "homepage": "https://github.com/vieroinc/viero-ui",
   "contributors": [
