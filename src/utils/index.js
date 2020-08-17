@@ -65,3 +65,15 @@ export const openFileOrFolderPicker = (options) => {
   ele.click();
   return ele;
 };
+
+export const snapshotVideoElement = (videoElement) => new Promise((resolve) => {
+  const canvas = createElement('canvas', {
+    attributes: {
+      width: videoElement.videoWidth,
+      height: videoElement.videoHeight,
+    },
+  });
+
+  canvas.getContext('2d').drawImage(videoElement, 0, 0);
+  return canvas.toBlob((blob) => resolve(blob));
+});
