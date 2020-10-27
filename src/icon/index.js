@@ -28,7 +28,7 @@ export class VieroIcon extends VieroWebComponent {
   }
 
   static get observedAttributes() {
-    return ['path'];
+    return ['path', 'view-box'];
   }
 
   connectedCallback() {
@@ -42,16 +42,25 @@ export class VieroIcon extends VieroWebComponent {
   attributeChangedCallback(name, oldValue, newValue) {
     super.attributeChangedCallback(name, oldValue, newValue);
     // eslint-disable-next-line default-case
-    switch (newValue) {
-      case 'null':
-      case 'undefined':
-      case null:
-      case undefined: {
-        // eslint-disable-next-line no-param-reassign
-        newValue = null;
+    switch (name) {
+      case 'path': {
+        // eslint-disable-next-line default-case
+        switch (newValue) {
+          case 'null':
+          case 'undefined':
+          case null:
+          case undefined: {
+            // eslint-disable-next-line no-param-reassign
+            newValue = null;
+          }
+        }
+        this.$.path.setAttribute('d', newValue || NONE);
+        break;
+      }
+      case 'view-box': {
+        this.$.svg.setAttribute('viewBox', newValue);
       }
     }
-    this.$.path.setAttribute('d', newValue || NONE);
   }
 }
 

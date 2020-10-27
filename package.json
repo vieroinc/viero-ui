@@ -1,6 +1,6 @@
 {
   "name": "@viero/ui",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "WebComponents based UI elements used by @vieroinc.",
   "homepage": "https://github.com/vieroinc/viero-ui",
   "contributors": [
@@ -19,7 +19,9 @@
     "reset": "npm run clean && rimraf node_modules",
     "lint": "eslint ./src",
     "build": "npm run lint && npm run clean && babel src -d ./dist --source-maps inline",
+    "build:nolint": "npm run clean && babel src -d ./dist --source-maps inline",
     "dist": "npm run build && copyfiles -u 1 \"src/**/*.html\" dist/ && copyfiles -u 1 \"src/**/*.css\" dist/ && copyfiles package.json README.md LICENSE.md dist",
+    "dist:nolint": "npm run build:nolint && copyfiles -u 1 \"src/**/*.html\" dist/ && copyfiles -u 1 \"src/**/*.css\" dist/ && copyfiles package.json README.md LICENSE.md dist",
     "npmjs": "npm run dist && npm publish ./dist --access public"
   },
   "module": "./index.js",
