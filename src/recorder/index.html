@@ -14,8 +14,10 @@
 
   #indicator {
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    top: var(--indicator-top, auto);
+    right: var(--indicator-right, 2rem);
+    bottom: var(--indicator-bottom, 2rem);
+    left: var(--indicator-left, auto);
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 0 0 3rem rgba(255, 255, 255, 0.5);
@@ -26,8 +28,8 @@
     font: var(--viero-font-highlight-2);
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
     padding: 0.5rem 01rem;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 0.6rem;
+    background: var(--indicator-background, rgba(0, 0, 0, 0.4));
+    border-radius: var(--indicator-border-radius, 0.6rem);
   }
 
   #container.on #indicator {
